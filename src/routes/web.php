@@ -14,4 +14,12 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', [ContactController::class, 'index']);
+// Route::get('/', [ContactController::class, 'index']);
+// Route::post('/contacts/confirm', [ContactController::class, 'confirm']);
+// Route::post('/contacts', [ContactController::class, 'store']);
+
+Route::controller(ContactController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::post('/contacts/confirm', 'confirm');
+    Route::post('/contacts', 'store');
+});
